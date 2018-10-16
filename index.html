@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js cookie_used_true">
+	<meta charset="ISO-8859-1">
 	<head>
 		<title>Simulador de Eventos do Protegemed</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -20,9 +21,23 @@
 		  <script>
 			function sendEvent() {
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "http://localhost:8081/protegemed/webservice/operations/post/receive-event", true);
+				var payload = "TYPE=" + document.getElementById('type').value + "&"
+								+ "OUTLET=" + document.getElementById('outlet').value + "&" 
+								+ "RFID=" + document.getElementById('rfid').value + "&"
+								+ "OFFSET=" + document.getElementById('offset').value + "&"
+								+ "GAIN=" + document.getElementById('gain').value + "&"
+								+ "RMS=" + document.getElementById('rms').value + "&"
+								+ "MV=" + document.getElementById('mv').value + "&"
+								+ "MV2=" + document.getElementById('mv2').value + "&" 
+								+ "UNDER=" + document.getElementById('under').value + "&"
+								+ "OVER=" + document.getElementById('over').value + "&"
+								+ "DURATION=" + document.getElementById('duration').value + "&"
+								+ "SIN=" + document.getElementById('sin').value + "&"
+								+ "COS=" + document.getElementById('cos').value;
+								
+				xhttp.open("POST", "http://localhost/protegemed/capture.php", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send("TYPE=01&OUTLET=01&RFID=FFFF0001&OFFSET=2077&GAIN=430003F8&RMS=3E999B0E&MV=00000000&MV2=00000000&UNDER=0000&OVER=0000&DURATION=0000");
+				xhttp.send(payload);
 			}
 		  </script>
 		  <script>
@@ -54,21 +69,21 @@
 			</script>
 	</head>
 	<body>
-		<form>
+		<form id="form">
 			<label>Formulário para gerar evento</label>
-			<input placeholder="type" required="required" type="text">
-			<input placeholder="outlet" required="required" type="text">
-			<input placeholder="rfid" required="required" type="text">
-			<input placeholder="offset" required="required" type="text">
-			<input placeholder="gain" required="required" type="text">
-			<input placeholder="rms" required="required" type="text">
-			<input placeholder="mv" required="required" type="text">
-			<input placeholder="mv2" required="required" type="text">
-			<input placeholder="under" required="required" type="text">
-			<input placeholder="over" required="required" type="text">
-			<input placeholder="duration" required="required" type="text">
-			<input placeholder="sin" required="required" type="text">
-			<input placeholder="cos" required="required" type="text">
+			<input placeholder="type" required="required" type="text" id="type">
+			<input placeholder="outlet" required="required" type="text" id="outlet">
+			<input placeholder="rfid" required="required" type="text" id="rfid">
+			<input placeholder="offset" required="required" type="text" id="offset">
+			<input placeholder="gain" required="required" type="text" id="gain">
+			<input placeholder="rms" required="required" type="text" id="rms">
+			<input placeholder="mv" required="required" type="text" id="mv">
+			<input placeholder="mv2" required="required" type="text" id="mv2">
+			<input placeholder="under" required="required" type="text" id="under">
+			<input placeholder="over" required="required" type="text" id="over">
+			<input placeholder="duration" required="required" type="text" id="duration">
+			<input placeholder="sin" required="required" type="text" id="sin">
+			<input placeholder="cos" required="required" type="text" id="cos">
 			<br>
 			<button onclick="sendEvent()">Enviar</button>
 			<br>
