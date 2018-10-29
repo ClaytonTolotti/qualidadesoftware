@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js cookie_used_true">
-	<meta charset="ISO-8859-1">
+	<meta charset="ISO-UTF-8">
 	<head>
 		<title>Simulador de Eventos do Protegemed</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -91,8 +91,8 @@
 			<input placeholder="under" required="required" type="text" id="under">
 			<input placeholder="over" required="required" type="text" id="over">
 			<input placeholder="duration" required="required" type="text" id="duration">
-			<input placeholder="sin" required="required" type="text" id="sin" <!-- onblur="validate(this)" -->>
-			<input placeholder="cos" required="required" type="text" id="cos" <!-- onblur="validate(this)" -->>
+			<input placeholder="sin" required="required" type="text" id="sin">
+			<input placeholder="cos" required="required" type="text" id="cos">
 			<br>
 			<button id="enviar" onclick="sendEvent()">Enviar</button>
 			<br>
@@ -102,7 +102,7 @@
 			<h1>Log:</h1>
 			<div>
 				Selecione o arquivo: 
-				<input type="file" id="fileInput">
+				<input type="file" id="fileInput" >
 			</div>
 			<pre id="fileDisplayArea"><pre>
 
